@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#16234d">
+<title>바이브코딩 프롬프트 50선</title>
+<meta name="description" content="복사해서 바로 쓰는 바이브코딩 프롬프트 50선">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#16234d;--orange:#ff7a1a;--orange2:#fff0e4;--bg:#f6f7fb;--card:#fff;--ink:#17203a;--muted:#5c6880;--line:#e3e7f0;--green:#146b42;--shadow:0 14px 40px rgba(22,35,77,.09);--display:"Black Han Sans","IBM Plex Sans KR",sans-serif;--body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65}
+button,input{font:inherit}button{cursor:pointer}
+.wrap{width:min(100% - 36px,820px);margin:auto}
+:focus-visible{outline:3px solid #ffb680;outline-offset:3px}
+
+/* 상단 바 */
+.top{position:sticky;top:0;z-index:30;background:rgba(246,247,251,.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(227,231,240,.9)}
+.topline{height:64px;display:flex;align-items:center;gap:10px}
+.brand{font-family:var(--display);font-size:21px;text-decoration:none;color:var(--navy);margin-right:auto}
+.brand span{color:var(--orange)}
+.iconbtn{border:1px solid var(--line);background:var(--card);border-radius:12px;min-height:46px;padding:0 14px;color:var(--navy);font-weight:700}
+.progress{height:3px;background:var(--line)}.progress i{display:block;height:100%;width:0;background:var(--orange);transition:.25s}
+
+/* 첫 화면 */
+.hero{position:relative;overflow:hidden;background:linear-gradient(145deg,#111d43 0%,#243d7a 100%);color:#fff;padding:54px 0 48px}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero:before{width:300px;height:300px;background:rgba(255,122,26,.18);right:-100px;top:-150px}
+.hero:after{width:180px;height:180px;border:34px solid rgba(255,255,255,.05);left:-95px;bottom:-110px}
+.eyebrow{display:inline-flex;gap:10px;align-items:center;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:11px 20px;font-size:clamp(16px,4.2vw,19px);font-weight:700;letter-spacing:-.01em;word-break:keep-all}
+.eyebrow i{flex:none;width:9px;height:9px;border-radius:50%;background:#ff9a50;box-shadow:0 0 0 6px rgba(255,122,26,.2)}
+.power{display:block;margin:30px 0 0;width:150px;height:78px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.18);position:relative;transition:background .5s ease .2s}
+.power::after{content:"";position:absolute;top:9px;left:9px;width:60px;height:60px;border-radius:50%;background:#fff;transition:transform .55s cubic-bezier(.3,1.4,.5,1) .2s}
+.power span{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--display);font-size:21px;color:#fff;transition:opacity .3s ease .35s}
+.power .off{right:20px;opacity:.7}.power .on{left:22px;opacity:0}
+.hero.lit .power{background:var(--orange)}
+.hero.lit .power::after{transform:translateX(72px)}
+.hero.lit .power .off{opacity:0}.hero.lit .power .on{opacity:1}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,9vw,60px);line-height:1.12;letter-spacing:-.03em;margin:24px 0 14px}
+.hero h1 em{display:block;color:#ff9a50;font-style:normal}
+.hero p{max-width:560px;margin:0;color:rgba(255,255,255,.85);font-size:clamp(16px,4.3vw,18px);white-space:nowrap}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:11px 15px;min-width:112px}
+.stat b{display:block;font-size:21px}.stat span{font-size:13px;color:rgba(255,255,255,.72)}
+
+/* 맞춤 설정 */
+.start{margin-top:-22px;position:relative;z-index:2}
+.setup{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+.setup h2,.section-title{font-family:var(--display);font-size:25px;font-weight:400;margin:0}
+.setup-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;margin-top:15px}
+.field label{display:block;font-size:14px;font-weight:700;margin:0 0 7px}
+.field input{width:100%;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;min-height:48px;color:var(--ink)}
+.field input:focus{border-color:var(--orange);outline:0;box-shadow:0 0 0 4px var(--orange2)}
+.moods,.filters{display:flex;gap:7px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:11px 14px;font-size:15px;font-weight:600;min-height:46px}
+.chip.active{border-color:var(--orange);background:var(--orange2);color:#9c4400}
+
+/* 앱스 스크립트 설명서 */
+.guide{margin-top:34px;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.guidehead{width:100%;border:0;background:none;display:flex;align-items:center;gap:12px;padding:18px;text-align:left;color:var(--ink)}
+.guidehead strong{word-break:keep-all}
+.guidehead .emoji{flex:none;display:grid;place-items:center;width:44px;height:44px;background:#e7f5ed;border-radius:13px;font-size:22px}
+.gbadge{flex:none;white-space:nowrap;border-radius:999px;background:#e7f5ed;color:#146b42;padding:6px 10px;font-size:13px;font-weight:700;margin-left:auto}
+.guidehead .txt{flex:1;min-width:0}
+.guidehead strong{display:block;font-size:18px}
+.guidehead small{display:block;color:var(--muted);font-size:14px;margin-top:1px}
+.guidebody{padding:0 18px 20px;border-top:1px solid var(--line)}
+.guidebody h4{font-size:16px;margin:20px 0 8px}
+.gsteps{counter-reset:g;list-style:none;margin:14px 0 0;padding:0}
+.gsteps li{counter-increment:g;display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.gsteps li::before{content:counter(g);flex:none;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-size:14px;font-weight:700;display:grid;place-items:center;margin-top:3px}
+.gsteps b{display:block;font-size:16px}
+.gsteps span{display:block;color:var(--muted);font-size:14.5px}
+.warn{background:#fff8f2;border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:13px 15px;margin-top:16px;font-size:15px}
+.warn b{display:block;margin-bottom:4px}
+.qa{border-top:1px dashed var(--line);padding-top:6px;margin-top:16px}
+.qa dt{font-weight:700;margin-top:12px}
+.qa dd{margin:3px 0 0;color:var(--muted);font-size:15px}
+
+/* 목록 */
+.tools{padding:34px 0 18px}
+.filters{margin-top:14px}
+.result{font-size:14px;color:var(--muted);margin:12px 2px 0}
+.category{margin:17px 0}
+.cathead{width:100%;border:0;background:var(--card);border-radius:18px;padding:17px 18px;display:flex;align-items:center;gap:13px;text-align:left;box-shadow:0 5px 18px rgba(22,35,77,.045);color:var(--ink)}
+.cathead .emoji{display:grid;place-items:center;width:44px;height:44px;background:#f0f3fa;border-radius:13px;font-size:23px}
+.cathead strong{display:block;font-size:18px}
+.cathead small{display:block;color:var(--muted);font-size:14px;margin-top:1px}
+.cathead .count{margin-left:auto;flex:none;white-space:nowrap;border-radius:999px;background:var(--orange2);color:#9c4400;padding:6px 10px;font-size:13px;font-weight:700}
+.chev{margin-left:4px;transition:.2s}.cathead[aria-expanded=true] .chev{transform:rotate(180deg)}
+.cards{display:grid;gap:11px;padding:11px 0}.cards[hidden]{display:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:18px;transition:.2s}
+.card.done{border-color:#ffc89f;background:linear-gradient(90deg,#fff 80%,#fff8f2)}
+.cardtop{display:flex;align-items:flex-start;gap:11px}
+.num{font-family:var(--display);color:var(--orange);font-size:19px;line-height:1.5;min-width:28px}
+.ctext{flex:1;min-width:0}.ctext h3{margin:0;font-size:17px;line-height:1.45}
+.ctext p{margin:3px 0 0;color:var(--muted);font-size:14.5px}
+.badge{display:inline-flex;margin-top:10px;border-radius:7px;padding:4px 9px;background:#eef1f7;color:#4e5a73;font-size:13px;font-weight:700}
+.badge.gas{background:#e7f5ed;color:var(--green)}
+.actions{display:flex;align-items:center;gap:7px}
+.fav,.copy{border:0;border-radius:11px;height:46px;font-weight:700}
+.fav{width:46px;background:#f2f4f8;color:#8c93a6;font-size:19px}.fav.on{background:#fff1df;color:var(--orange)}
+.copy{background:var(--navy);color:#fff;padding:0 16px}.copy.ok{background:var(--orange)}
+details{margin:12px 0 0 39px;border-top:1px dashed var(--line);padding-top:8px}
+summary{cursor:pointer;color:var(--muted);font-size:14px;font-weight:600}
+pre{white-space:pre-wrap;word-break:keep-all;background:#f5f6fa;border-radius:12px;padding:14px;font-family:var(--body);font-size:14px;line-height:1.7;max-height:340px;overflow:auto;user-select:all;-webkit-user-select:all}
+.empty{display:none;text-align:center;background:#fff;border:1px dashed var(--line);border-radius:18px;padding:40px 18px;color:var(--muted)}
+
+/* 서명 */
+footer{margin-top:56px;background:var(--navy);color:#fff;padding:40px 0 95px}
+.gift{color:#ffad72;font-weight:700;font-size:14px;letter-spacing:.04em}
+.ded{color:rgba(255,255,255,.8);white-space:pre-line;max-width:620px;word-break:keep-all;margin:10px 0 0}
+.sign{margin-top:30px;border-top:1px solid rgba(255,255,255,.18);padding-top:24px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.sign .role{color:rgba(255,255,255,.62);font-size:14px;margin:0 0 4px}
+.sign .name{display:block;font-family:"Nanum Myeongjo","Apple SD Gothic Neo",serif;font-weight:800;font-size:clamp(30px,8vw,38px);letter-spacing:.14em;line-height:1.25;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.sign .meta{text-align:right;color:rgba(255,255,255,.62);font-size:14px;line-height:1.7;flex:none}
+.sign .meta b{display:block;color:rgba(255,255,255,.9);font-weight:600;font-size:15px}
+.toast{position:fixed;left:50%;bottom:84px;z-index:60;transform:translate(-50%,15px);opacity:0;background:#11182d;color:#fff;border-radius:12px;padding:12px 18px;font-size:15px;transition:.2s;pointer-events:none;box-shadow:var(--shadow);max-width:calc(100% - 36px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.bottom{display:none}
+@media(max-width:620px){
+ .wrap{width:min(100% - 28px,820px)}.hero{padding-top:42px}.setup-grid{grid-template-columns:1fr}
+ .topline{height:58px}.brand{font-size:18px}.label-hide{display:none}
+ .card{padding:15px}.cardtop{gap:8px}.actions{gap:5px}.copy{padding:0 12px}.ctext h3{font-size:16.5px}details{margin-left:36px}
+ .gbadge{display:none}
+ .sign{display:block}
+ .sign .meta{text-align:left;margin-top:16px}
+ .bottom{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:7px max(12px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom))}
+ .bottom a{color:var(--muted);text-decoration:none;text-align:center;font-size:13px;font-weight:700;padding:4px 0}
+ .bottom b{display:block;color:var(--navy);font-size:19px}
+ footer{padding-bottom:110px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap topline">
+    <a class="brand" href="#top">프롬프트 <span>50선</span></a>
+    <button class="iconbtn" id="favorites">☆ <span class="label-hide">즐겨찾기</span></button>
+    <button class="iconbtn" id="toggleAll">전체 펼치기</button>
+  </div>
+  <div class="progress"><i id="progress"></i></div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow"><i></i> 구글워크스페이스 X AI 강의선물</span>
+    <button type="button" class="power" id="power" aria-label="프롬프트 목록으로 이동"><span class="on">ON</span><span class="off">OFF</span></button>
+    <h1>바이브코딩<br><em>프롬프트 50선</em></h1>
+    <p>코딩 몰라도 괜찮아요. 복사만 하세요.</p>
+    <div class="stats">
+      <div class="stat"><b>40</b><span>만들기 프롬프트</span></div>
+      <div class="stat"><b>10</b><span>고치기 프롬프트</span></div>
+      <div class="stat"><b id="copiedStat">0</b><span>복사 완료</span></div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="start wrap" id="custom">
+    <div class="guide" id="guide">
+      <button class="guidehead" id="guidehead" aria-expanded="false" aria-controls="guidebody">
+        <span class="emoji">📗</span>
+        <span class="txt"><strong>앱스 스크립트 설명서</strong><small>'구글 시트' 프롬프트를 쓰기 전에 읽어보세요</small></span>
+        <span class="gbadge">필독</span>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="guidebody" id="guidebody" hidden>
+        <h4>앱스 스크립트가 뭔가요?</h4>
+        <p style="color:var(--muted);margin:6px 0 0;font-size:15px">구글 시트 안에 들어 있는 작은 자동화 기능이에요. 따로 설치할 것도, 서버를 빌릴 것도 없어요. 시트에 코드를 붙여넣으면 시트가 메일을 보내고, 정해진 시간에 혼자 움직이고, 입력 화면이 있는 웹 주소까지 만들어 줘요. 구글 계정만 있으면 무료로 쓸 수 있어요.</p>
+
+        <h4>처음 한 번, 이 순서대로</h4>
+        <ol class="gsteps">
+          <li><div><b>구글 시트를 새로 만들어요</b><span>연습용으로 빈 시트를 하나 만드세요. 중요한 자료가 든 시트로 연습하지 마세요.</span></div></li>
+          <li><div><b>확장 프로그램 → Apps Script</b><span>시트 위쪽 메뉴에서 눌러요. 새 탭에 코드 편집기가 열려요.</span></div></li>
+          <li><div><b>기존 내용을 지우고 코드를 붙여넣어요</b><span>AI가 준 Code.gs 내용을 그대로 붙여넣어요. 화면이 있는 앱이라면 파일 추가(+) → HTML로 index.html도 만들어요.</span></div></li>
+          <li><div><b>저장하고 실행해요</b><span>디스크 모양 저장 버튼을 누른 뒤, 위쪽 함수 목록에서 실행할 함수를 고르고 '실행'을 눌러요.</span></div></li>
+          <li><div><b>권한을 승인해요</b><span>처음 실행하면 권한을 묻는 창이 떠요. 계정 선택 → '고급' → '(프로젝트 이름)(으)로 이동' → 허용 순서로 눌러요.</span></div></li>
+          <li><div><b>웹 주소로 배포해요 (입력 화면이 있을 때만)</b><span>오른쪽 위 '배포' → '새 배포' → 유형에서 '웹 앱' 선택 → 액세스 권한을 정하고 배포하면 주소가 나와요.</span></div></li>
+          <li><div><b>자동 실행을 걸어요 (필요할 때만)</b><span>왼쪽 시계 모양 '트리거' → 트리거 추가 → 실행할 함수와 시간을 고르면 매일 알아서 움직여요.</span></div></li>
+        </ol>
+
+        <div class="warn"><b>⚠️ '안전하지 않은 페이지'라고 뜨면요</b>내가 직접 만든 스크립트라 구글이 아직 검토하지 않았다는 뜻이에요. 남이 보낸 코드가 아니라 내가 붙여넣은 코드일 때만 '고급 → 이동'으로 진행하세요.</div>
+        <div class="warn"><b>🔑 API 키는 코드에 쓰지 마세요</b>Gemini 같은 키는 프로젝트 설정(톱니바퀴) → 스크립트 속성에 저장하고, 코드에서는 불러다 쓰게 해달라고 AI에게 말하세요. 시트 셀이나 채팅창에 키를 붙여넣지 않는 것도 중요해요.</div>
+
+        <h4>자주 막히는 곳</h4>
+        <dl class="qa">
+          <dt>실행했는데 아무 일도 안 일어나요</dt><dd>함수 목록에서 엉뚱한 함수를 고른 경우가 많아요. AI에게 "어떤 함수를 실행해야 하나요?"라고 물어보세요.</dd>
+          <dt>빨간 글씨가 떴어요</dt><dd>'고치기 프롬프트'의 <b>오류가 났을 때</b>를 복사해서, 빨간 글씨를 그대로 붙여넣으면 돼요.</dd>
+          <dt>웹 주소를 열면 화면이 하얘요</dt><dd>index.html 파일 이름이 다르거나 배포를 안 한 경우예요. 배포 → 새 배포를 다시 해보세요.</dd>
+          <dt>코드를 고쳤는데 그대로예요</dt><dd>배포한 앱은 '배포 관리 → 수정 → 새 버전'으로 다시 배포해야 반영돼요.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="tools wrap" id="prompts">
+    <h2 class="section-title">어떤 도구를 만들까요?</h2>
+    <div class="filters" id="filters">
+      <button class="chip active" data-filter="all">전체</button>
+      <button class="chip" data-filter="html">파일 1개</button>
+      <button class="chip" data-filter="gas">구글 시트</button>
+      <button class="chip" data-filter="fix">고치기</button>
+    </div>
+    <p class="result" id="result"></p>
+    <div id="categories"></div>
+    <div class="empty" id="empty">해당하는 프롬프트가 없어요.<br>위에서 '전체'를 눌러 보세요.</div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="gift">FOR EVERYONE WHO JOINED THE CLASS</div>
+    <p class="ded" id="ded"></p>
+    <div class="sign">
+      <div>
+        <p class="role">한콘연 전임강사</p>
+        <span class="name">이 지 온</span>
+      </div>
+      <div class="meta"><b>2026년 9월 20일</b>구글워크스페이스 X AI 특강</div>
+    </div>
+  </div>
+</footer>
+
+<nav class="bottom">
+  <a href="#top"><b>⌂</b>처음</a>
+  <a href="#custom"><b>✦</b>맞춤</a>
+  <a href="#prompts"><b>☰</b>목록</a>
+</nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =====================================================================
+   ★ 여기만 바꾸면 됩니다 ★
+   ===================================================================== */
+var DEDICATION = "강의에서 함께 만든 것을 집에서도 이어가시도록 프롬프트 50개를 정리해 드립니다.\n마음껏 고쳐 쓰시고, 더 나은 모습으로 완성해 보세요.";
+
+/* 분위기 3종: 이름, 프롬프트에 들어갈 문장 */
+var MOODS = [
+  ["또렷하게","진한 남색과 주황 포인트, 흰 배경의 또렷하고 믿음직한 느낌"],
+  ["포근하게","베이지와 브라운 계열의 따뜻하고 포근한 느낌"],
+  ["차분하게","회색과 흰색 위주의 차분하고 단정한 느낌"]
+];
+
+/* 분야와 프롬프트
+   k = "html"(파일 1개) 또는 "gas"(구글 시트)
+   t=이름, d=한 줄 설명, w=언제 쓰나, f=꼭 들어갈 기능 3가지 */
+var CATEGORIES = [
+ {emoji:"🌱", name:"처음이에요", desc:"AI도 코딩도 처음인 분의 첫 앱", who:"코딩이 처음인 사람", items:[
+  {k:"html",t:"오늘 뭐 먹지 룰렛",d:"메뉴 고민을 룰렛 한 번으로 끝내요",w:"점심·저녁 메뉴가 고민될 때",f:["메뉴 후보를 직접 추가·삭제","돌아가는 룰렛 애니메이션과 결과 발표","최근에 먹은 메뉴는 빼고 돌리기"]},
+  {k:"html",t:"공정한 제비뽑기",d:"당번도 조 편성도 뒷말 없이",w:"당번이나 조를 정해야 할 때",f:["이름 여러 개 입력","한 명 뽑기와 조 나누기 두 가지 방식","두근두근 뽑기 애니메이션"]},
+  {k:"html",t:"물 마시기 기록",d:"한 컵 마실 때마다 버튼 한 번",w:"물을 마실 때마다",f:["한 컵 추가 버튼과 물컵이 채워지는 그림","하루 목표(기본 8잔) 진행률","최근 7일 기록 보기"]},
+  {k:"html",t:"습관 도장판",d:"매일 도장 찍는 재미로 이어가요",w:"하루를 마치는 저녁에",f:["습관 3개까지 등록","오늘 했으면 도장 찍기","연속 일수와 이번 달 달력 표시"]},
+  {k:"html",t:"기분 한 줄 일기",d:"이모지 하나와 한 줄이면 충분해요",w:"자기 전 1분",f:["기분 이모지 5개 중 하나 고르고 한 줄 쓰기","달력에 날짜별 이모지 표시","이번 달 기분 통계"]},
+  {k:"html",t:"여행 짐 체크리스트",d:"빠뜨린 물건 없이 출발해요",w:"여행 가기 전날",f:["국내·해외·캠핑 중 고르면 기본 목록 자동 생성","챙긴 물건 체크와 진행률 표시","나만의 항목 추가"]},
+  {k:"html",t:"가족 생일·기념일 달력",d:"소중한 날을 미리 챙겨요",w:"한 달에 한 번 확인할 때",f:["이름·날짜·메모(음력 여부) 입력","다가오는 순서로 D-day 표시","선물 아이디어 메모"]},
+  {k:"html",t:"하루 한 줄 가계부",d:"10초면 끝나는 지출 기록",w:"돈을 쓸 때마다",f:["금액·분류·메모 입력","이번 달 합계와 분류별 막대그래프","월 예산 대비 남은 금액 표시"]},
+  {k:"html",t:"나만의 단어장 퀴즈",d:"내가 넣은 단어로 시험 봐요",w:"출퇴근길이나 자투리 시간에",f:["단어와 뜻 입력","카드 뒤집기 방식 퀴즈","틀린 단어만 모아서 다시 풀기"]},
+  {k:"html",t:"살까 말까 계산기",d:"충동구매 전에 한 번 멈춰요",w:"결제 버튼을 누르기 전에",f:["가격과 예상 사용 횟수로 1회당 비용 계산","내 시급 기준으로 몇 시간 일해야 하는지 환산","고민 목록에 넣고 24시간 뒤 다시 보기"]}
+ ]},
+ {emoji:"💼", name:"직장인", desc:"반복 업무를 줄여 주는 도구", who:"사무실에서 일하는 직장인", items:[
+  {k:"html",t:"오늘 할 일 딱 3가지",d:"중요한 일만 남기는 할 일 목록",w:"출근해서 하루를 시작할 때",f:["하루에 3개까지만 입력 가능","완료하면 축하 효과","어제·지난 기록 모아보기"]},
+  {k:"html",t:"25분 집중 타이머",d:"집중과 휴식을 번갈아 알려줘요",w:"집중해서 끝낼 일이 있을 때",f:["25분 집중·5분 휴식 타이머(시간 변경 가능)","끝나면 알림음과 화면 표시","오늘 집중한 횟수 기록"]},
+  {k:"html",t:"회의록 정리 도우미",d:"회의 끝나고 5분 만에 공유해요",w:"회의가 끝난 직후",f:["회의명·참석자·결정사항·할 일(담당자·기한) 입력 칸","깔끔한 글로 정리해서 복사하는 버튼","지난 회의록 목록 저장"]},
+  {k:"html",t:"마감일 D-day 관리판",d:"놓치면 안 되는 날짜를 모아 봐요",w:"보고·신고·계약 마감을 챙길 때",f:["일정 이름과 날짜 입력","D-day 자동 계산과 가까운 순 정렬","7일 이내는 주황, 당일은 빨강 표시"]},
+  {k:"html",t:"자주 쓰는 문장 보관함",d:"메일·메신저 문구를 한 번에 꺼내요",w:"비슷한 메일을 또 쓸 때",f:["문장과 분류(인사·답장·안내 등) 저장","분류별로 골라 보기와 검색","한 번 눌러 복사"]},
+  {k:"html",t:"연차 계산기",d:"남은 연차를 바로 확인해요",w:"휴가 계획을 세울 때",f:["입사일을 넣으면 올해 발생 연차 계산(화면에 '참고용' 표시)","사용한 날짜 기록","남은 일수와 사용 내역 표시"]},
+  {k:"gas",t:"업무 요청 접수판",d:"말로 받던 부탁을 한곳에 모아요",w:"동료가 업무를 요청할 때마다",f:["요청 내용·요청자·기한을 적는 입력 화면","접수·진행·완료 상태 바꾸기","상태별 건수와 기한 임박 표시"]},
+  {k:"gas",t:"비품·소모품 재고 관리",d:"떨어지기 전에 미리 알아요",w:"비품을 꺼내거나 채울 때",f:["품목별 입고·출고 입력 화면","현재 수량 자동 계산","최소 수량 아래로 내려가면 빨간색 강조"]},
+  {k:"gas",t:"주간 업무 보고 자동 정리",d:"금요일 보고서를 버튼 하나로",w:"매주 금요일 오후",f:["시트에서 이번 주 완료한 일만 모으기","보고서 문장으로 정리해 화면에 표시","Gmail 임시보관함에 메일 초안 만들기(자동 발송은 하지 않기)"]},
+  {k:"gas",t:"거래처 연락처 장부",d:"명함 찾느라 서랍 뒤지지 않아요",w:"새 거래처를 만났을 때",f:["회사·이름·연락처·메모 입력 화면","이름과 회사로 검색","최근 연락한 날짜 기록"]}
+ ]},
+ {emoji:"🏪", name:"소상공인", desc:"가게 운영이 가벼워지는 도구", who:"작은 가게를 운영하는 사장님", items:[
+  {k:"html",t:"오늘 매출 한 줄 기록",d:"마감하면서 30초면 끝나요",w:"매일 가게 문을 닫을 때",f:["현금·카드·배달을 나눠서 입력","이번 주·이번 달 합계","요일별 평균 막대그래프"]},
+  {k:"html",t:"메뉴 원가 계산기",d:"얼마에 팔아야 남는지 알아봐요",w:"새 메뉴 가격을 정할 때",f:["재료·사용량·단가 입력","원가와 원가율 자동 계산","목표 원가율에 맞는 판매가 추천"]},
+  {k:"html",t:"단골 스탬프 쿠폰판",d:"종이 쿠폰 없이 단골을 챙겨요",w:"손님이 계산할 때",f:["전화번호 뒤 4자리로 손님 찾기","스탬프 적립 버튼","10개를 채우면 쿠폰 알림과 사용 처리"]},
+  {k:"html",t:"알바 근무 시간표",d:"다음 주 스케줄을 한눈에",w:"다음 주 근무를 짤 때",f:["이름·요일·시간 입력","주간 시간표로 보기","사람별 주간 근무시간과 예상 인건비(시급 입력 시)"]},
+  {k:"html",t:"오픈·마감 체크리스트",d:"빠뜨리는 일 없이 열고 닫아요",w:"매일 오픈과 마감 때",f:["오픈용·마감용 체크 목록","날짜가 바뀌면 자동으로 초기화","빠뜨린 항목은 기록으로 남기기"]},
+  {k:"html",t:"리뷰 답글 도우미",d:"답글 쓰는 시간을 줄여 줘요",w:"새 리뷰가 달렸을 때",f:["칭찬·불만·배달 지연 등 상황별 답글 문구 보관","가게 이름과 메뉴 이름 자동으로 넣기","한 번 눌러 복사"]},
+  {k:"gas",t:"예약·주문 접수 장부",d:"전화로 받은 예약을 놓치지 않아요",w:"전화·메신저로 예약을 받을 때",f:["이름·연락처·날짜·내용 입력 화면","오늘과 내일 예약만 모아 보기","완료 처리와 메모"]},
+  {k:"gas",t:"재료 발주 알리미",d:"부족한 재료를 자동으로 골라 줘요",w:"재고를 확인할 때",f:["재료별 현재 수량과 최소 수량 관리","부족한 품목만 모아 보기","거래처별 발주 문구 자동 작성과 복사"]},
+  {k:"gas",t:"월 매출 현황판",d:"이번 달 장사를 그래프로 봐요",w:"월말이나 궁금할 때 언제든",f:["매출 시트를 읽어 일별 그래프 표시","지난달 같은 기간과 비교","요일별 평균 매출"]},
+  {k:"gas",t:"손님 설문 결과판",d:"구글 설문 응답을 보기 좋게",w:"설문 응답이 모였을 때",f:["구글 폼 응답 시트 읽기","만족도 평균과 항목별 그래프","최근 주관식 의견 목록"]}
+ ]},
+ {emoji:"📊", name:"구글 시트 대시보드", desc:"구글워크스페이스 X AI 복습용", who:"구글 시트로 일하는 사람", items:[
+  {k:"gas",t:"나만의 업무 대시보드",d:"할 일·일정·알림을 한 화면에",w:"매일 아침 업무를 시작할 때",f:["할 일·일정·알림 시트를 한 화면에 모아 보기","오늘 마감인 일 강조","화면에서 완료 체크하면 시트에 반영"]},
+  {k:"gas",t:"시트에 넣는 웹 입력 화면",d:"시트를 열지 않고 입력해요",w:"시트에 직접 입력하기 번거로울 때",f:["시트 첫 행 제목을 읽어 입력 칸 자동 생성","저장하면 '저장했어요' 확인 문구","최근 입력 5건 보여주기"]},
+  {k:"gas",t:"아침 요약 메일",d:"오늘 할 일이 메일로 도착해요",w:"매일 아침 8시에 자동으로",f:["시트에서 오늘 할 일과 마감 모으기","나에게 요약 메일 보내기","시간 트리거 설정 방법 안내와 보낸 기록 남기기"]},
+  {k:"gas",t:"메일을 시트로 자동 정리",d:"주문·문의 메일이 표로 쌓여요",w:"특정 제목의 메일이 자주 올 때",f:["Gmail 검색어로 해당 메일만 찾기","날짜·보낸 사람·제목·본문 앞부분을 시트에 추가","이미 넣은 메일은 건너뛰기"]},
+  {k:"gas",t:"Gemini 한 줄 요약",d:"긴 글을 AI가 요약하고 분류해요",w:"긴 글이 시트에 쌓일 때",f:["선택한 열의 글을 Gemini API로 한 줄 요약","칭찬·불만·문의로 분류해 옆 칸에 적기","API 키는 스크립트 속성에 저장하는 방법 안내"]},
+  {k:"gas",t:"마감 임박 알리미",d:"기한 3일 전에 메일로 알려줘요",w:"기한이 있는 업무를 관리할 때",f:["기한 3일 전과 당일에 메일 알림","완료된 건은 제외","매일 아침 자동 실행"]},
+  {k:"gas",t:"캘린더 주간 일정표",d:"이번 주 일정을 표로 뽑아요",w:"주간 계획을 세울 때",f:["구글 캘린더에서 이번 주 일정 읽기","요일별 표로 시트에 정리","버튼 한 번으로 새로고침"]},
+  {k:"gas",t:"설문 응답 실시간 현황판",d:"행사 중에 결과를 바로 보여줘요",w:"교육이나 행사를 진행할 때",f:["구글 폼 응답 수 크게 표시","항목별 그래프","1분마다 자동 새로고침"]},
+  {k:"gas",t:"드라이브 파일 목록 정리",d:"폴더 안 파일을 표로 한눈에",w:"폴더가 복잡해졌을 때",f:["폴더 안 파일의 이름·종류·수정일·링크를 시트에 작성","하위 폴더 포함 여부 선택","1년 넘게 안 고친 파일 표시(삭제는 하지 않기)"]},
+  {k:"gas",t:"신청서 접수와 승인",d:"연차·구매 신청을 한곳에서 처리해요",w:"신청서를 받고 승인할 때",f:["신청 입력 화면에서 시트로 저장","승인·반려 버튼과 의견 남기기","결과를 신청자에게 메일로 알리기"]}
+ ]}
+];
+
+/* 고치기 프롬프트 10개 */
+var FIXES = [
+ {t:"글씨와 버튼 크게",d:"화면이 작고 답답할 때",text:"지금 만든 화면의 글씨와 버튼이 작아서 보기 불편해. 기능은 그대로 두고 글씨는 18px 이상, 버튼은 손가락으로 누르기 편한 크기로 키워 줘. 바꾼 부분만 짧게 알려주고 전체 코드를 다시 줘."},
+ {t:"오류가 났을 때",d:"빨간 글씨가 뜨거나 멈췄을 때",text:"실행했더니 오류가 났어. 아래에 오류 내용을 그대로 붙여넣을게.\n\n[오류 내용]\n(여기에 붙여넣기)\n\n1) 왜 생긴 오류인지 초등학생도 알게 한 줄로 설명하고\n2) 고친 전체 코드를 다시 주고\n3) 내가 어디에 어떻게 붙여넣으면 되는지 순서대로 알려줘."},
+ {t:"눌러도 반응이 없을 때",d:"버튼이 안 눌리거나 화면이 하얄 때",text:"[안 되는 것: 예) 저장 버튼]을 눌러도 아무 일도 일어나지 않아. 가능한 원인을 3가지로 추려서 하나씩 확인하는 방법을 알려주고, 가장 가능성 높은 원인을 고친 전체 코드를 다시 줘."},
+ {t:"기능 하나 추가하기",d:"쓰다 보니 필요한 게 생겼을 때",text:"지금 만든 것에 기능을 하나 추가하고 싶어.\n\n[추가할 기능] (예: 엑셀 파일로 내려받기)\n\n기존 기능과 저장된 데이터는 건드리지 말고 이 기능만 추가해 줘. 추가한 뒤 달라진 점을 3줄로 알려주고 전체 코드를 다시 줘."},
+ {t:"저장이 안 될 때",d:"새로고침하면 내용이 사라질 때",text:"입력한 내용이 새로고침하면 사라져. 지금 어떤 방식으로 저장하고 있는지 먼저 설명해 주고, 내 환경에서 저장이 유지되도록 고쳐 줘. 만약 이 환경에서 저장이 불가능하다면 '내보내기·가져오기' 버튼으로 대신할 수 있게 해 줘."},
+ {t:"휴대폰에서 깨질 때",d:"폰으로 보면 잘리거나 겹칠 때",text:"컴퓨터에서는 괜찮은데 휴대폰에서 보면 화면이 잘리거나 옆으로 밀려. 폭 360px 휴대폰에서도 한 줄로 깔끔하게 보이도록 고쳐 줘. 표는 옆으로 밀어서 볼 수 있게 하고, 전체 코드를 다시 줘."},
+ {t:"색과 분위기 바꾸기",d:"디자인이 마음에 안 들 때",text:"기능은 그대로 두고 디자인만 바꿔 줘.\n\n[원하는 분위기] (예: 우리 가게 간판처럼 초록색과 나무 느낌)\n\n색은 3가지 이내로 쓰고, 글씨가 배경에 묻히지 않게 해 줘. 바꾼 색 이름과 코드를 표로 알려줘."},
+ {t:"코드 쉽게 설명 듣기",d:"뭘 만든 건지 이해하고 싶을 때",text:"방금 만든 코드를 코딩을 전혀 모르는 사람에게 설명하듯 알려줘. 1) 전체가 어떤 덩어리들로 이뤄져 있는지 5줄 이내로, 2) 내가 나중에 직접 고쳐도 되는 부분(문구·색·숫자)이 어디인지 줄 위치와 함께 알려줘. 코드에는 한글 주석을 달아서 다시 줘."},
+ {t:"망가졌을 때 되돌리기",d:"고치다가 더 이상해졌을 때",text:"방금 수정한 뒤로 오히려 더 이상해졌어. 바로 전 단계, 잘 작동하던 버전의 전체 코드로 되돌려 줘. 그리고 이번에 하려던 수정을 더 작은 단계로 나눠서, 한 단계씩 확인하며 진행하자."},
+ {t:"다른 사람과 같이 쓰기",d:"완성한 걸 공유하고 싶을 때",text:"완성한 것을 다른 사람도 쓸 수 있게 공유하고 싶어. 내가 만든 방식(HTML 파일 1개 또는 구글 앱스 스크립트)에 맞춰 가장 쉬운 공유 방법을 1가지만 골라서, 처음 하는 사람 기준으로 클릭 순서대로 알려줘. 공유할 때 개인정보나 API 키가 새지 않게 확인할 점도 알려줘."}
+];
+/* ===================== 설정 끝 ===================== */
+
+var mood = 0, filter = "all", favOnly = false;
+var favs = new Set(load("vibeFavs", [])), copied = new Set(load("vibeCopied", []));
+function load(key, fallback){ try{ return JSON.parse(localStorage.getItem(key)) || fallback; }catch(e){ return fallback; } }
+function save(key, value){ try{ localStorage.setItem(key, typeof value === "string" ? value : JSON.stringify(value)); }catch(e){} }
+function $(s){ return document.querySelector(s); }
+function $$(s){ return [].slice.call(document.querySelectorAll(s)); }
+
+/* 만들기 프롬프트를 조립한다 */
+function buildPrompt(item, who){
+  var person = who;
+  var lines = [
+    "너는 코딩을 처음 해보는 사람을 돕는 친절한 개발 파트너야.",
+    "아래 내용대로 실제로 작동하는 것을 만들어 줘.",
+    "",
+    "[만들 것] " + item.t + " - " + item.d,
+    "① 누가: " + person,
+    "② 언제: " + item.w,
+    "③ 무엇을:",
+    "   - " + item.f[0],
+    "   - " + item.f[1],
+    "   - " + item.f[2],
+    "④ 어떻게 보이게: " + MOODS[mood][1] + ". 휴대폰에서도 편하게 큰 글씨와 큰 버튼으로."
+  ];
+  if (item.k === "gas"){
+    lines = lines.concat([
+      "⑤ 저장은: 구글 시트에. 시트 탭 이름과 첫 행 제목부터 정해서 알려줘.",
+      "",
+      "[만드는 방식]",
+      "- 구글 시트 + 앱스 스크립트(Apps Script) 웹앱으로",
+      "- Code.gs와 index.html 전체 코드를 나눠서 주고, 어디에 붙여넣는지 순서대로 안내",
+      "- 권한 승인, 배포(웹앱 주소 받기), 트리거 설정은 처음 하는 사람 기준으로 한 단계씩",
+      "- API 키나 비밀번호는 코드에 직접 쓰지 말고 '스크립트 속성'에 저장",
+      "- 시트 내용을 지우거나 덮어쓰는 동작은 넣지 말고, 꼭 필요하면 먼저 나에게 물어보기",
+      "- 화면 안에 짧은 사용법을 넣고, 설치·배포 순서도 따로 정리해 주기"
+    ]);
+  } else {
+    lines = lines.concat([
+      "⑤ 저장은: 가능하면 브라우저에 자동 저장. 저장이 안 되는 환경에서도 오류 없이 작동하게.",
+      "",
+      "[만드는 방식]",
+      "- 설치 없이 브라우저에서 바로 열리는 HTML 파일 1개로 (HTML·CSS·JS를 한 파일에)",
+      "- 화면 안에 짧은 사용법을 넣기(처음 열었을 때 뭘 누르면 되는지 한두 줄)",
+      "- 화면의 모든 글은 쉬운 한국어로, 삭제 전에는 꼭 한 번 물어보기"
+    ]);
+  }
+  return lines.join("\n");
+}
+
+function toast(message){
+  var el = $("#toast");
+  el.textContent = message; el.classList.add("show");
+  clearTimeout(el._t); el._t = setTimeout(function(){ el.classList.remove("show"); }, 2400);
+}
+
+/* 목록을 그린다 */
+function render(){
+  var n = 0, root = $("#categories");
+  var groups = CATEGORIES.map(function(c){ return c; });
+  groups.push({emoji:"🔧", name:"고치기 프롬프트", desc:"어떤 앱에든 이어서 쓰는 공통 세트", who:"", items:FIXES.map(function(f){ return {k:"fix", t:f.t, d:f.d, text:f.text}; })});
+
+  groups.forEach(function(g, ci){
+    var section = document.createElement("section");
+    section.className = "category";
+    section.innerHTML = '<button class="cathead" aria-expanded="'+(ci===0)+'"><span class="emoji">'+g.emoji+'</span><span><strong>'+g.name+'</strong><small>'+g.desc+'</small></span><span class="count">'+g.items.length+'개</span><span class="chev">⌄</span></button><div class="cards"'+(ci?' hidden':'')+'></div>';
+    var cards = section.querySelector(".cards");
+
+    g.items.forEach(function(item){
+      n++;
+      var id = (n<10?"0":"") + n;
+      var card = document.createElement("article");
+      card.className = "card"; card.dataset.type = item.k; card.dataset.id = id;
+      if (copied.has(id)) card.classList.add("done");
+      var badge = item.k === "gas" ? '<span class="badge gas">구글 시트</span>' : item.k === "fix" ? '<span class="badge">공통 수정</span>' : '<span class="badge">파일 1개</span>';
+      card.innerHTML = '<div class="cardtop"><span class="num">'+id+'</span><div class="ctext"><h3>'+item.t+'</h3><p>'+item.d+'</p>'+badge+'</div><div class="actions"><button class="fav '+(favs.has(id)?"on":"")+'" aria-label="즐겨찾기">'+(favs.has(id)?"★":"☆")+'</button><button class="copy">복사</button></div></div><details><summary>프롬프트 미리 보기</summary><pre></pre></details>';
+      card._make = item.k === "fix" ? function(){ return item.text; } : function(){ return buildPrompt(item, g.who); };
+      card.querySelector("pre").textContent = card._make();
+      cards.appendChild(card);
+    });
+    root.appendChild(section);
+  });
+  bind(); applyFilter(); updateStats();
+}
+
+/* 클립보드로 복사한다. 실패하면 미리 보기를 열어 선택해 준다 */
+function copyCard(card, button){
+  var text = card._make();
+  function after(ok){
+    if (ok){
+      copied.add(card.dataset.id); save("vibeCopied", [].slice.call(copied));
+      card.classList.add("done"); button.classList.add("ok"); button.textContent = "완료";
+      toast(card.dataset.id + "번 프롬프트를 복사했어요"); updateStats();
+      setTimeout(function(){ button.classList.remove("ok"); button.textContent = "복사"; }, 1600);
+    } else {
+      var pre = card.querySelector("pre");
+      card.querySelector("details").open = true;
+      var r = document.createRange(); r.selectNodeContents(pre);
+      var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      toast("자동 복사가 막혀 있어요. 아래 글을 길게 눌러 복사해 주세요");
+    }
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){ after(true); }, function(){ after(false); });
+  } else { after(false); }
+}
+
+function bind(){
+  $$(".cathead").forEach(function(b){
+    b.onclick = function(){ var body = b.nextElementSibling, open = body.hidden; body.hidden = !open; b.setAttribute("aria-expanded", open); };
+  });
+  $$(".fav").forEach(function(b){
+    b.onclick = function(){
+      var c = b.closest(".card"), id = c.dataset.id;
+      if (favs.has(id)) favs.delete(id); else favs.add(id);
+      save("vibeFavs", [].slice.call(favs));
+      b.classList.toggle("on"); b.textContent = favs.has(id) ? "★" : "☆"; applyFilter();
+    };
+  });
+  $$(".copy").forEach(function(b){ b.onclick = function(){ copyCard(b.closest(".card"), b); }; });
+}
+
+function applyFilter(){
+  var visible = 0;
+  $$(".card").forEach(function(c){
+    var okType = filter === "all" || c.dataset.type === filter;
+    var okFav = !favOnly || favs.has(c.dataset.id);
+    c.hidden = !(okType && okFav);
+    if (!c.hidden) visible++;
+  });
+  $$(".category").forEach(function(s){
+    var count = $$(".card").filter(function(c){ return s.contains(c) && !c.hidden; }).length;
+    s.hidden = !count;
+    s.querySelector(".count").textContent = count + "개";
+    if ((filter !== "all" || favOnly) && count){
+      s.querySelector(".cards").hidden = false;
+      s.querySelector(".cathead").setAttribute("aria-expanded", "true");
+    }
+  });
+  $("#result").textContent = (favOnly ? "즐겨찾기 · " : "") + visible + "개의 프롬프트";
+  $("#empty").style.display = visible ? "none" : "block";
+}
+
+function updateStats(){
+  $("#copiedStat").textContent = copied.size;
+  $("#progress").style.width = (copied.size / 50 * 100) + "%";
+}
+
+function refreshPreviews(){ $$(".card").forEach(function(c){ c.querySelector("pre").textContent = c._make(); }); }
+
+/* 시작 */
+(function start(){
+  $("#ded").textContent = DEDICATION;
+
+  render();
+
+  $$("#filters .chip").forEach(function(b){
+    b.onclick = function(){
+      filter = b.dataset.filter;
+      $$("#filters .chip").forEach(function(x){ x.classList.remove("active"); });
+      b.classList.add("active"); favOnly = false;
+      $("#favorites").innerHTML = '☆ <span class="label-hide">즐겨찾기</span>';
+      applyFilter();
+    };
+  });
+  $("#favorites").onclick = function(){
+    favOnly = !favOnly;
+    $("#favorites").innerHTML = (favOnly ? "★" : "☆") + ' <span class="label-hide">즐겨찾기</span>';
+    applyFilter(); location.hash = "prompts";
+  };
+  $("#toggleAll").onclick = function(e){
+    var open = $$(".cards").some(function(x){ return x.hidden; });
+    $$(".cards").forEach(function(x){ x.hidden = !open; });
+    $$(".cathead").forEach(function(x){ x.setAttribute("aria-expanded", open); });
+    e.currentTarget.textContent = open ? "전체 접기" : "전체 펼치기";
+  };
+  $("#power").onclick = function(){ $("#prompts").scrollIntoView(); };
+  setTimeout(function(){ document.querySelector(".hero").classList.add("lit"); }, 220);
+
+  $("#guidehead").onclick = function(){
+    var body = $("#guidebody"), open = body.hidden;
+    body.hidden = !open; $("#guidehead").setAttribute("aria-expanded", open);
+  };
+})();
+</script>
+</body>
+</html>
